@@ -6,6 +6,10 @@ jQuery(function () {
 		taskItem.find('input[type="text"]:first').focus();
 		return false;		
 	});
+
+	$('#add').click().click().text();
+
+	$('#tasks ul').sortable({handle:".handle"});
 	
 	$('input[type="text"]:first').focus();
 });
