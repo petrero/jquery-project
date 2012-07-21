@@ -10,7 +10,13 @@ jQuery.fn.extend({
 		return this;
 	},
 
-	resetTaskState: function(){},
+	resetTaskState: function(){
+		this.resetTaskStateClassNames();
+		return this.each(function(){
+			jQuery(this).data('taskStateIndex', 0).addClass(jQuery.fn.taskStates[0]);
+			console.log();
+		});
+	},
 
 	toggleTaskState: function(){
 		this.resetTaskStateClassNames();
@@ -36,7 +42,10 @@ jQuery(function () {
 
 	$('#add').click(function(e){
 		var taskItem = $('#tasks ul li:first').clone();
-		taskItem.find('input[type="text"]').val("");
+		taskItem.
+				find('.completion a').resetTaskState().
+			end().
+				find('input[type="text"]').val("");
 		$('#tasks ul').append(taskItem);
 		taskItem.find('input[type="text"]:first').focus();
 		return false;		
